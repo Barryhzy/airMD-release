@@ -1,0 +1,52 @@
+# 依赖
+node_modules/
+.pnpm-store/
+.build-tools/
+
+# 构建产物
+dist/
+dist-ssr/
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# 测试产物
+test-results/
+playwright-report/
+blob-report/
+coverage/
+.vitest/
+
+# 编辑器 / 系统
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.local
+*.log
+
+# 环境变量
+.env
+.env.*
+!.env.example
+
+# 本地截图（调试用）
+shots/
+
+# 打包日志
+build-run.log
+
+# 构建日志与发布产物
+*.log
+release/
+
+# 本地记忆（由助手维护，不入库）
+.workbuddy/
+
+# Private signing material
+*.p12
+*.pfx
+*.p8
+*.key
+*.pem
+*.keychain-db

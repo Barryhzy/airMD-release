@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0.06" y1="0" x2="0.94" y2="1">
+      <stop offset="0" stop-color="#7FBBFF"/>
+      <stop offset="0.45" stop-color="#3B7CFF"/>
+      <stop offset="1" stop-color="#1F49CE"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="tile">
+      <rect width="1024" height="1024" rx="228"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1024" height="1024" rx="228" fill="url(#bg)"/>
+
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="520" fill="url(#gloss)"/>
+    <!-- 风：贴着底部的两道气流，从左侧掠过，尾部渐散 -->
+    <path d="M120 806 C 300 806, 352 730, 536 730 C 660 730, 716 782, 848 782"
+          fill="none" stroke="#FFFFFF" stroke-opacity="0.36" stroke-width="28" stroke-linecap="round"/>
+    <path d="M182 880 C 348 880, 396 812, 560 812 C 660 812, 706 854, 800 854"
+          fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="20" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(512 512) scale(0.8) translate(-512 -512)" fill="none"
+     stroke="#FFFFFF" stroke-width="78" stroke-linecap="round" stroke-linejoin="round">
+    <!-- M -->
+    <path d="M250 668 V 366 L 410 546 L 570 366 V 668"/>
+    <!-- ↓ -->
+    <path d="M760 366 V 612"/>
+    <path d="M706 566 L 760 620 L 814 566"/>
+  </g>
+</svg>

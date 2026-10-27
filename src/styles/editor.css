@@ -1,0 +1,524 @@
+/* -----------------------------------------------------------------
+   Crepe 主题微调：把默认的 Notion 风格压到语雀式的紧凑排版。
+   只改视觉，不动任何与数据结构相关的行为。
+------------------------------------------------------------------ */
+
+.editor-canvas .milkdown {
+  background: transparent;
+  color: var(--text);
+}
+
+/* 自己实现了左侧手柄，隐藏 Crepe 自带的（保留其斜杠菜单） */
+.editor-canvas .milkdown .milkdown-block-handle {
+  display: none;
+}
+
+.editor-canvas .milkdown .ProseMirror {
+  padding: 0;
+  font-size: var(--doc-font-size);
+  line-height: 1.78;
+  color: var(--text);
+  caret-color: var(--accent);
+}
+
+/* ------------------------------- 标题 ------------------------------ */
+
+.editor-canvas .milkdown .ProseMirror h1,
+.editor-canvas .milkdown .ProseMirror h2,
+.editor-canvas .milkdown .ProseMirror h3,
+.editor-canvas .milkdown .ProseMirror h4,
+.editor-canvas .milkdown .ProseMirror h5,
+.editor-canvas .milkdown .ProseMirror h6 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  padding: 0;
+  line-height: 1.4;
+}
+
+.editor-canvas .milkdown .ProseMirror h1 {
+  font-size: calc(var(--doc-font-size) * 1.806);
+  margin: 34px 0 12px;
+}
+.editor-canvas .milkdown .ProseMirror h2 {
+  font-size: calc(var(--doc-font-size) * 1.484);
+  margin: 30px 0 10px;
+}
+.editor-canvas .milkdown .ProseMirror h3 {
+  font-size: calc(var(--doc-font-size) * 1.226);
+  margin: 26px 0 8px;
+}
+/* 正文是 15.5px，h4-h6 必须靠「字号 + 字重 + 颜色」三重区分，否则和加粗正文一样 */
+.editor-canvas .milkdown .ProseMirror h4 {
+  font-size: calc(var(--doc-font-size) * 1.161);
+  font-weight: 700;
+  margin: 26px 0 8px;
+}
+.editor-canvas .milkdown .ProseMirror h5 {
+  font-size: calc(var(--doc-font-size) * 1.065);
+  font-weight: 700;
+  margin: 22px 0 6px;
+}
+.editor-canvas .milkdown .ProseMirror h6 {
+  font-size: calc(var(--doc-font-size) * 0.968);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  margin: 20px 0 4px;
+  color: var(--text-secondary);
+}
+
+.editor-canvas .milkdown .ProseMirror > *:first-child {
+  margin-top: 0;
+}
+
+/* ------------------------------- 正文 ------------------------------ */
+
+.editor-canvas .milkdown .ProseMirror p {
+  font-size: var(--doc-font-size);
+  line-height: 1.78;
+  padding: 3px 0;
+  color: var(--text);
+}
+
+.editor-canvas .milkdown .ProseMirror a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent), transparent 65%);
+}
+
+.editor-canvas .milkdown .ProseMirror a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.editor-canvas .milkdown .ProseMirror strong {
+  font-weight: 650;
+}
+
+/* ----------------------------- 行内代码 ---------------------------- */
+
+.editor-canvas .milkdown .ProseMirror code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 1.5px 5px;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: inline-block;
+  line-height: 1.5;
+}
+
+/* ------------------------------ 引用块 ----------------------------- */
+
+.editor-canvas .milkdown .ProseMirror blockquote {
+  padding-left: 16px;
+  margin: 10px 0;
+  border-left: 3px solid var(--border-strong);
+  color: var(--text-secondary);
+}
+
+.editor-canvas .milkdown .ProseMirror blockquote::before {
+  display: none;
+}
+
+.editor-canvas .milkdown .ProseMirror blockquote p {
+  color: var(--text-secondary);
+}
+
+/* ------------------------------ 列表 ------------------------------ */
+
+.editor-canvas .milkdown .ProseMirror ul,
+.editor-canvas .milkdown .ProseMirror ol {
+  padding-left: 8px;
+  margin: 4px 0;
+}
+
+.editor-canvas .milkdown .ProseMirror ul {
+  list-style-type: disc;
+}
+
+.editor-canvas .milkdown .ProseMirror ul ul {
+  list-style-type: circle;
+}
+
+.editor-canvas .milkdown .ProseMirror ul ul ul {
+  list-style-type: square;
+}
+
+.editor-canvas .milkdown .ProseMirror ol {
+  list-style-type: decimal;
+}
+
+.editor-canvas .milkdown .ProseMirror li {
+  padding: 0;
+}
+
+.editor-canvas .milkdown .ProseMirror li p {
+  padding: 0;
+  line-height: 1.72;
+}
+
+.editor-canvas .milkdown .ProseMirror li > p:first-child {
+  padding-top: 0;
+}
+
+.editor-canvas .milkdown .ProseMirror li > p:last-child {
+  padding-bottom: 0;
+}
+
+.editor-canvas .milkdown .ProseMirror li::marker {
+  color: var(--text-tertiary);
+}
+
+/* ---------------------------- 待办清单 ---------------------------- */
+
+.editor-canvas .milkdown .ProseMirror .milkdown-list-item-block {
+  padding: 0;
+}
+
+.editor-canvas .milkdown .ProseMirror .milkdown-list-item-block > .list-item {
+  display: flex;
+  align-items: flex-start;
+  /* 和字号一起缩放：6px @16.5px */
+  gap: 0.364em;
+}
+
+/*
+ * 让行高与正文完全一致：否则每一项都会比文字高出一截，列表看起来非常松散。
+ * 全部用 em（继承 --doc-font-size），字号一放大，复选框 / 项目符号跟着一起变，
+ * 高度取列表项首行的 line-height（Crepe 的 1.72），复选框才是贴着这一行居中，
+ * 而不是固定 26px 悬在文字上面。
+ */
+.editor-canvas .milkdown .ProseMirror .milkdown-list-item-block .label-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 1.09em;
+  width: 1.09em;
+  height: 1.72em;
+  margin-top: 0;
+}
+
+.editor-canvas .milkdown .ProseMirror .milkdown-list-item-block .label-wrapper svg {
+  width: 0.97em;
+  height: 0.97em;
+}
+
+.editor-canvas .milkdown .ProseMirror .milkdown-list-item-block .label-wrapper .label.bullet svg {
+  width: 0.85em;
+  height: 0.85em;
+  fill: var(--text-tertiary);
+}
+
+.editor-canvas .milkdown .ProseMirror .milkdown-list-item-block .label-wrapper {
+  color: var(--text-tertiary);
+}
+
+.editor-canvas .milkdown .ProseMirror .milkdown-list-item-block .list-item.checked .children {
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+}
+
+/* ----------------------------- 代码块 ----------------------------- */
+
+.editor-canvas .milkdown .ProseMirror .milkdown-code-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  margin: 12px 0;
+  /* 不能用 overflow: hidden：会把语言下拉层裁在代码块边缘，
+     看起来像是「下拉框高度跟着代码块变化」。圆角由内部元素自己处理。 */
+  overflow: visible;
+}
+
+.editor-canvas .milkdown .milkdown-code-block .copy-button {
+  min-width: 76px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 70ms ease, box-shadow 120ms ease;
+}
+
+.editor-canvas .milkdown .milkdown-code-block .copy-button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.editor-canvas .milkdown .milkdown-code-block .copy-button:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: inset var(--shadow-sm);
+}
+
+.editor-canvas .milkdown .milkdown-code-block .copy-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.editor-canvas .milkdown .ProseMirror pre {
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: calc(var(--doc-font-size) * 0.84);
+  line-height: 1.65;
+  overflow-x: auto;
+}
+
+.editor-canvas .milkdown .ProseMirror pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.editor-canvas .milkdown .milkdown-code-block .language-picker {
+  z-index: 60;
+  min-width: 240px;
+}
+
+.editor-canvas .milkdown .milkdown-code-block .language-picker .menu,
+.editor-canvas .milkdown .milkdown-code-block .language-picker > div {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.editor-canvas .milkdown .milkdown-code-block .language-list {
+  height: auto;
+  max-height: min(320px, 46vh);
+  padding: 4px 0;
+}
+
+.editor-canvas .milkdown .milkdown-code-block .language-list-item {
+  padding: 6px 20px;
+}
+
+/* CodeMirror 的当前行高亮：默认是深色块，压成品牌色的淡底 */
+.editor-canvas .milkdown .milkdown-code-block .cm-activeLineGutter {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.editor-canvas .milkdown .milkdown-code-block .cm-activeLine {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.editor-canvas .milkdown .milkdown-code-block .cm-gutters {
+  background: transparent;
+  border-right: 1px solid var(--border);
+  color: var(--text-tertiary);
+}
+
+/* CodeMirror 的当前行高亮：默认是深色块，压成品牌色的淡底 */
+.editor-canvas .milkdown .milkdown-code-block .cm-activeLineGutter {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.editor-canvas .milkdown .milkdown-code-block .cm-activeLine {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.editor-canvas .milkdown .milkdown-code-block .cm-gutters {
+  background: transparent;
+  border-right: 1px solid var(--border);
+  color: var(--text-tertiary);
+}
+
+/* ------------------------------ 表格 ------------------------------ */
+
+.editor-canvas .milkdown .ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0;
+  font-size: calc(var(--doc-font-size) * 0.935);
+  table-layout: fixed;
+}
+
+.editor-canvas .milkdown .ProseMirror th,
+.editor-canvas .milkdown .ProseMirror td {
+  border: 1px solid var(--border);
+  padding: 7px 11px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.editor-canvas .milkdown .ProseMirror th {
+  background: var(--bg-subtle);
+  font-weight: 600;
+}
+
+.editor-canvas .milkdown .ProseMirror th p,
+.editor-canvas .milkdown .ProseMirror td p {
+  padding: 0;
+}
+
+.editor-canvas .milkdown .ProseMirror .selectedCell::after {
+  background: color-mix(in srgb, var(--accent), transparent 88%);
+}
+
+/* ------------------------------ 分隔线 ----------------------------- */
+
+.editor-canvas .milkdown .ProseMirror hr {
+  height: 1px;
+  padding: 0;
+  margin: 22px 0;
+  background: var(--border);
+  background-clip: border-box;
+}
+
+/* ------------------------------ 图片 ------------------------------ */
+
+.editor-canvas .milkdown .ProseMirror img {
+  border-radius: var(--radius-md);
+  max-width: 100%;
+}
+
+.editor-canvas .milkdown .milkdown-image-block {
+  margin: 14px 0;
+}
+
+.editor-canvas .milkdown .milkdown-image-block > .image-wrapper {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-subtle);
+}
+
+.editor-canvas .milkdown .milkdown-image-block > .image-wrapper img {
+  border-radius: var(--radius-md);
+}
+
+.editor-canvas .milkdown .milkdown-image-block figcaption,
+.editor-canvas .milkdown .milkdown-image-block .caption-input {
+  font-size: calc(var(--doc-font-size) * 0.8);
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* ------------------------------ 占位符 ----------------------------- */
+
+.editor-canvas .milkdown .ProseMirror .placeholder::before,
+.editor-canvas .milkdown .ProseMirror p.is-empty::before {
+  color: var(--text-tertiary);
+}
+
+/* ---------------------------- 斜杠菜单 ----------------------------- */
+
+.milkdown .milkdown-slash-menu {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-ui);
+  color: var(--text);
+}
+
+.milkdown .milkdown-slash-menu .tab-group {
+  border-bottom: 1px solid var(--border);
+}
+
+/* 滚动由 slashMenuScroll.ts 接管（选中项越过中线才跟随），
+   关掉 Crepe 默认的 smooth，否则两套滚动会互相拉扯 */
+.milkdown .milkdown-slash-menu .menu-groups {
+  scroll-behavior: auto;
+}
+
+/* 滚动到中间时两端渐隐，避免边缘卡着半行字 */
+.milkdown .milkdown-slash-menu .menu-groups[data-scroll='start'] {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 26px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 26px), transparent 100%);
+}
+
+.milkdown .milkdown-slash-menu .menu-groups[data-scroll='middle'] {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+}
+
+.milkdown .milkdown-slash-menu .menu-groups[data-scroll='end'] {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 26px);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 26px);
+}
+
+.milkdown .milkdown-slash-menu ul li {
+  color: var(--text);
+}
+
+.milkdown .milkdown-slash-menu ul li:hover,
+.milkdown .milkdown-slash-menu ul li.selected {
+  background: var(--bg-hover);
+}
+
+/* --------------------------- 链接浮层 ------------------------------ */
+
+.milkdown .milkdown-link-preview,
+.milkdown .milkdown-link-edit,
+.milkdown .milkdown-tooltip {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  color: var(--text);
+  font-family: var(--font-ui);
+}
+
+/* 光标动画尽量克制 */
+.editor-canvas .milkdown .ProseMirror .ProseMirror-yjs-cursor > div {
+  display: none;
+}
+/* 标题折叠仅由 ProseMirror 装饰控制，不写入 Markdown。 */
+.editor-canvas .ProseMirror .heading-fold-hidden {
+  display: none !important;
+}
+
+.editor-canvas .ProseMirror .heading-foldable {
+  position: relative;
+}
+
+.heading-fold-toggle {
+  position: absolute;
+  left: -26px;
+  top: 0.7em;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: default;
+}
+
+.heading-fold-toggle svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.heading-fold-toggle[aria-expanded='true'] svg {
+  transform: rotate(90deg);
+}
+
+.heading-fold-toggle:hover,
+.heading-fold-toggle[aria-expanded='false'] {
+  color: var(--text-secondary);
+  background: var(--bg-hover);
+}
+
+.heading-fold-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}

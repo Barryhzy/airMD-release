@@ -1,0 +1,45 @@
+{
+  "name": "airmd",
+  "private": true,
+  "version": "0.4.3",
+  "description": "airMD — 免费、开源、完全离线的所见即所得 Markdown 桌面编辑器",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:tauri": "tauri dev",
+    "build": "tsc --noEmit && vite build",
+    "build:tauri": "tauri build",
+    "build:mac": "bash scripts/build-macos.sh",
+    "preview": "vite preview --port 4173 --strictPort --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build && playwright test",
+    "test:all": "npm run test && npm run test:e2e"
+  },
+  "dependencies": {
+    "@milkdown/crepe": "7.22.3",
+    "@milkdown/kit": "7.22.3",
+    "@tauri-apps/api": "2.12.4",
+    "@tauri-apps/plugin-dialog": "2.8.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "unified": "11.0.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@tauri-apps/cli": "2.12.3",
+    "@types/node": "22.18.9",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.1",
+    "@vitejs/plugin-react": "5.0.4",
+    "jsdom": "27.0.0",
+    "typescript": "5.9.3",
+    "vite": "7.1.9",
+    "vitest": "3.2.4"
+  }
+}

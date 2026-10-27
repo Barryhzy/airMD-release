@@ -1,0 +1,33 @@
+[package]
+name = "airmd"
+version = "0.4.3"
+description = "airMD — 免费、开源、完全离线的所见即所得 Markdown 编辑器"
+authors = ["airMD contributors"]
+edition = "2021"
+rust-version = "1.77.2"
+license = "MIT"
+
+[lib]
+name = "airmd_lib"
+# 桌面端只需要 rlib；cdylib/staticlib 是给 iOS/Android 用的，
+# 在 Windows + GNU 工具链下 cdylib 会触发 "export ordinal too large"。
+# 将来要支持移动端时，再按目标平台加回 staticlib / cdylib。
+crate-type = ["rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.22"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
