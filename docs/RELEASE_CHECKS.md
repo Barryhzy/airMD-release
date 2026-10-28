@@ -25,3 +25,7 @@ Prepared on 2026-10-27 for `Barryhzy/airMD-release`.
 A user-supplied Windows x64 NSIS installer was added on 2026-10-28. Its bytes and SHA-256 were checked during upload; it was not rebuilt or executed on this Mac. The user previously reported Windows testing completed. Intel Mac builds were not produced or tested in this release preparation. Full browser E2E and Rust test suites were not rerun during packaging. Known functional limitations remain documented in [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
 
 These checks describe what was inspected; they are not a complete security audit of the application or all third-party dependencies.
+
+## Download list simplification — 2026-10-28
+
+Only the Windows EXE, macOS DMG, and release notes are retained as manually uploaded release assets. Auxiliary ZIPs, the source manifest, and the checksum text attachment were removed from the release downloads; their local audit copies are retained. GitHub still provides its automatic source archives.
