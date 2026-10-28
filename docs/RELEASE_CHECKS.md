@@ -22,6 +22,6 @@ Prepared on 2026-10-27 for `Barryhzy/airMD-release`.
 
 ## Scope
 
-The Windows EXE is intentionally omitted. Windows and Intel Mac builds were not produced or tested in this release preparation. Full browser E2E and Rust test suites were not rerun during packaging. Known functional limitations remain documented in [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
+A user-supplied Windows x64 NSIS installer was added on 2026-10-28. Its bytes and SHA-256 were checked during upload; it was not rebuilt or executed on this Mac. The user previously reported Windows testing completed. Intel Mac builds were not produced or tested in this release preparation. Full browser E2E and Rust test suites were not rerun during packaging. Known functional limitations remain documented in [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
 
 These checks describe what was inspected; they are not a complete security audit of the application or all third-party dependencies.

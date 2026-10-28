@@ -57,11 +57,11 @@ Use it for a quick change to one file or a longer writing session across many do
 
 ## Install
 
-Download the macOS installer from [Releases](https://github.com/Barryhzy/airMD-release/releases). This release provides an Apple Silicon (arm64) build; the Windows installer will be added later. Node.js and Rust are not required to use a packaged desktop app.
+Download the Windows or macOS installer from [Releases](https://github.com/Barryhzy/airMD-release/releases). This release provides Windows x64 and Apple Silicon (arm64) installers. Node.js and Rust are not required to use a packaged desktop app.
 
 | System | Installation |
 | --- | --- |
-| Windows 10 / 11 | No EXE is included in this release. Build from source for now; installers will be provided through Releases later. |
+| Windows 10 / 11 | Download `airMD_0.4.3_x64-setup.exe` and follow the installer prompts. |
 | macOS 11 or later | On Apple Silicon, download `airMD_0.4.3_aarch64.dmg` and drag airMD into Applications. Intel Macs need a source build. |
 
 If a package for your platform is not available yet, follow the source instructions below. Current macOS builds use ad-hoc signing and are not signed with an Apple Developer identity or notarized.

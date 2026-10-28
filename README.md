@@ -57,11 +57,11 @@ Markdown 语法很简单，但每次都对着源码改格式，对我来说还�
 
 ## 安装
 
-前往 [Releases](https://github.com/Barryhzy/airMD-release/releases) 下载 macOS 安装包。安装桌面版无需自行安装 Node.js 或 Rust。本次提供 Apple Silicon（arm64）版本，Windows 安装包稍后补充。
+前往 [Releases](https://github.com/Barryhzy/airMD-release/releases) 下载 Windows 与 macOS 安装包。安装桌面版无需自行安装 Node.js 或 Rust。本次提供 Windows x64 和 Apple Silicon（arm64）版本。
 
 | 系统 | 安装方式 |
 | --- | --- |
-| Windows 10 / 11 | 本次暂不提供 EXE，可先从源码构建；后续安装包将通过 Releases 提供。 |
+| Windows 10 / 11 | 下载 `airMD_0.4.3_x64-setup.exe` 并按提示安装。 |
 | macOS 11 及以上 | Apple Silicon Mac 下载 `airMD_0.4.3_aarch64.dmg`，打开后将 airMD 拖入「应用程序」。Intel Mac 需从源码构建。 |
 
 如果尚未提供对应平台的安装包，可以按下方步骤从源码运行。当前 macOS 构建使用本地签名，尚未经过 Apple 开发者签名和公证。

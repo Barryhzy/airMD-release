@@ -11,5 +11,5 @@
 - 尚不支持重启恢复标签及未保存草稿、PDF/HTML 导出、文档内搜索替换。
 - Session restoration, unsaved draft recovery after restart, PDF/HTML export, and in-document find and replace are not implemented.
 
-- 本次只提供 Apple Silicon Mac 安装包；没有 Windows EXE 或 Intel Mac 安装包。Mac 构建没有 Apple Developer ID 签名或公证。
-- This release only provides Apple Silicon Mac installers. Windows EXE and Intel Mac installers are not included. The Mac app has no Apple Developer ID signature or notarization.
+- 本次提供 Windows x64 和 Apple Silicon Mac 安装包；没有 Intel Mac 安装包。Mac 构建没有 Apple Developer ID 签名或公证。
+- This release provides Windows x64 and Apple Silicon Mac installers. Intel Mac installers are not included. The Mac app has no Apple Developer ID signature or notarization.
