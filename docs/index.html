@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>下载 airMD · 轻快的本地 Markdown 编辑器</title>
+    <meta name="description" content="airMD 安装包下载：Windows x64 安装程序与 macOS (Apple Silicon) DMG。免费、开源、完全离线。" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <style>
+      :root {
+        --ink: #1f2329;
+        --ink-2: #51565f;
+        --ink-3: #8f959e;
+        --line: #e7eaef;
+        --bg: #f7f8fa;
+        --card: #ffffff;
+        --blue: #3b7cff;
+        --blue-deep: #1f49ce;
+        --green: #16a34a;
+        --amber: #b45309;
+        --amber-soft: #fef3c7;
+        --radius: 16px;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      a { color: var(--blue); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .hero {
+        background: linear-gradient(135deg, #7fbbff 0%, #3b7cff 45%, #1f49ce 100%);
+        color: #fff;
+        padding: 64px 24px 96px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        /* 风：两道掠过的气流 */
+        content: "";
+        position: absolute;
+        left: -5%; right: 0; bottom: 18px; height: 120px;
+        background:
+          radial-gradient(60px 26px at 30% 60%, rgba(255,255,255,.16) 99%, transparent),
+          radial-gradient(80px 30px at 62% 30%, rgba(255,255,255,.12) 99%, transparent),
+          radial-gradient(50px 22px at 85% 70%, rgba(255,255,255,.14) 99%, transparent);
+        pointer-events: none;
+      }
+      .brand { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
+      .brand img { width: 64px; height: 64px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+      .brand h1 { font-size: 34px; letter-spacing: -0.02em; }
+      .hero p.tagline { font-size: 17px; opacity: .95; max-width: 560px; margin: 0 auto; }
+      .pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+      .pill {
+        font-size: 12.5px; padding: 4px 12px; border-radius: 999px;
+        background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35);
+      }
+
+      main { max-width: 980px; margin: -56px auto 0; padding: 0 24px 40px; position: relative; z-index: 1; }
+
+      .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 26px 26px 22px;
+        box-shadow: 0 8px 30px rgba(31,35,41,.06);
+        display: flex; flex-direction: column; gap: 14px;
+      }
+      .card__os { display: flex; align-items: center; gap: 12px; }
+      .card__os svg { width: 30px; height: 30px; fill: var(--ink-2); flex: none; }
+      .card__os h2 { font-size: 19px; }
+      .card__os small { display: block; color: var(--ink-3); font-weight: 400; }
+      .btn {
+        display: block; text-align: center; padding: 13px 18px; border-radius: 12px;
+        font-size: 15.5px; font-weight: 600; text-decoration: none !important;
+        background: linear-gradient(135deg, #3b7cff, #1f49ce); color: #fff !important;
+        transition: transform .12s ease, box-shadow .12s ease;
+        box-shadow: 0 6px 16px rgba(59,124,255,.32);
+      }
+      .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(59,124,255,.38); }
+      .meta { font-size: 13px; color: var(--ink-3); display: grid; gap: 3px; }
+      .meta b { color: var(--ink-2); font-weight: 600; }
+      .status { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; }
+      .status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+
+      section.block { margin-top: 34px; }
+      section.block h3 { font-size: 17px; margin-bottom: 12px; }
+      .panel {
+        background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 20px 22px; font-size: 14px; color: var(--ink-2);
+      }
+      .panel ul { padding-left: 20px; display: grid; gap: 6px; }
+      .warn {
+        background: var(--amber-soft); border: 1px solid #fde68a; color: var(--amber);
+        border-radius: 10px; padding: 10px 14px; margin-top: 10px; font-size: 13.5px;
+      }
+      code.hash {
+        display: block; margin-top: 8px; padding: 10px 12px; border-radius: 8px;
+        background: #0f1115; color: #c9d4ff; font-size: 12px;
+        font-family: ui-monospace, Consolas, monospace;
+        word-break: break-all; user-select: all;
+      }
+      .hash-head { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+      .hash-head:first-child { margin-top: 0; }
+      .copy {
+        border: 1px solid var(--line); background: #fff; color: var(--ink-2);
+        border-radius: 8px; padding: 4px 12px; font-size: 12.5px; cursor: pointer;
+      }
+      .copy:hover { border-color: var(--blue); color: var(--blue); }
+
+      .links { display: flex; flex-wrap: wrap; gap: 10px; }
+      .links a {
+        border: 1px solid var(--line); background: #fff; border-radius: 10px;
+        padding: 9px 16px; font-size: 14px; color: var(--ink-2); text-decoration: none !important;
+      }
+      .links a:hover { border-color: var(--blue); color: var(--blue); }
+
+      footer {
+        text-align: center; color: var(--ink-3); font-size: 13px;
+        padding: 28px 24px 40px; border-top: 1px solid var(--line);
+      }
+      footer .foot-brand { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+      footer .foot-brand img { width: 22px; height: 22px; border-radius: 5px; }
+      footer p { margin-top: 4px; }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="brand">
+        <img src="./assets/airmd-icon.svg" alt="airMD 图标" />
+        <h1>airMD</h1>
+      </div>
+      <p class="tagline">像风一样轻的本地 Markdown 编辑器 — 双击就能改，打开项目也能写。</p>
+      <div class="pills">
+        <span class="pill">最新版本 v0.4.3 · 2026-10-28</span>
+        <span class="pill">免费开源 · MIT</span>
+        <span class="pill">完全离线</span>
+      </div>
+    </header>
+
+    <main>
+      <!--
+        下载直链指向 GitHub Releases 附件（发布后固定为 /releases/download/v0.4.3/…）。
+        发新版本时：改这里两个链接 + 顶部版本 pill + 校验和即可。
+      -->
+      <div class="cards">
+        <!-- Windows -->
+        <div class="card">
+          <div class="card__os">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3V5.5zm0 13 7.5 1.1v-7H3v5.9zM11.5 4.2 21 3v8.5h-9.5V4.2zm0 15.6L21 21v-8.5h-9.5v7.3z"/></svg>
+            <h2>Windows<small>Windows 10 / 11 · x64 · 安装包 3.07 MB</small></h2>
+          </div>
+          <a class="btn" href="https://github.com/Barryhzy/airMD-release/releases/download/v0.4.3/airMD_0.4.3_x64-setup.exe" download>下载 Windows 安装包</a>
+          <div class="meta">
+            <span>文件：<b>airMD_0.4.3_x64-setup.exe</b></span>
+            <span class="status"><span class="dot"></span>托管于 GitHub Releases</span>
+          </div>
+        </div>
+
+        <!-- macOS -->
+        <div class="card">
+          <div class="card__os">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.7 0-1.7-.8-2.8-.7-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7s1.6.7 2.8.7c1.1 0 1.9-1 2.6-2 .8-1.2 1.1-2.3 1.1-2.4 0 0-2.2-.8-2.2-3.4zM14.3 6.6c.6-.7 1-1.7.9-2.6-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.5 1 .1 2-.5 2.5-1.2z"/></svg>
+            <h2>macOS<small>macOS 11+ · Apple Silicon (M 系列) · DMG 4.54 MB</small></h2>
+          </div>
+          <a class="btn" href="https://github.com/Barryhzy/airMD-release/releases/download/v0.4.3/airMD_0.4.3_aarch64.dmg" download>下载 macOS 安装包</a>
+          <div class="meta">
+            <span>文件：<b>airMD_0.4.3_aarch64.dmg</b></span>
+            <span class="status"><span class="dot"></span>托管于 GitHub Releases</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="block">
+        <h3>安装说明</h3>
+        <div class="panel">
+          <ul>
+            <li><b>Windows：</b>运行 <code>airMD_0.4.3_x64-setup.exe</code>，按提示完成安装。安装程序内置 WebView2 引导，无需额外安装运行时。</li>
+            <li><b>macOS：</b>打开 DMG，把 airMD 拖进「应用程序」。Intel 芯片的 Mac 暂不提供安装包。</li>
+          </ul>
+          <div class="warn">macOS 版本使用 ad-hoc 本地签名（无 Developer ID / 公证），首次打开若被 Gatekeeper 拦截：在「系统设置 → 隐私与安全性」里点「仍要打开」，或在应用上<b>右键 → 打开</b>。</div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>文件校验（SHA-256）</h3>
+        <div class="panel">
+          <div class="hash-head">
+            <b>airMD_0.4.3_x64-setup.exe</b>
+            <button class="copy" data-copy="b558f829da9117f2ea603abe6ba65660bb1fb80a68795a7c0382fc0965d35701">复制</button>
+          </div>
+          <code class="hash">b558f829da9117f2ea603abe6ba65660bb1fb80a68795a7c0382fc0965d35701</code>
+          <div class="hash-head">
+            <b>airMD_0.4.3_aarch64.dmg</b>
+            <button class="copy" data-copy="baa0f38d565c3bf277ad95890a8734fbb03165434224e9f630dbd0594cee8059">复制</button>
+          </div>
+          <code class="hash">baa0f38d565c3bf277ad95890a8734fbb03165434224e9f630dbd0594cee8059</code>
+          <p style="margin-top:10px;font-size:12.5px">完整清单见 <a href="./downloads/SHA256SUMS.txt">SHA256SUMS.txt</a> · Windows 下校验：<code>certutil -hashfile 文件名 SHA256</code></p>
+        </div>
+      </section>
+
+      <section class="block">
+        <h3>历史版本与更新日志</h3>
+        <div class="links">
+          <a href="https://github.com/Barryhzy/airMD-release/releases" target="_blank" rel="noopener">GitHub Releases（全部版本）</a>
+          <a href="https://github.com/Barryhzy/airMD-release/blob/main/RELEASE_NOTES.md" target="_blank" rel="noopener">v0.4.3 发布说明</a>
+          <a href="https://github.com/Barryhzy/airMD" target="_blank" rel="noopener">源码仓库</a>
+          <a href="https://github.com/Barryhzy/airMD-release/issues" target="_blank" rel="noopener">反馈问题</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="foot-brand">
+        <img src="./assets/favicon.png" alt="" /> airMD
+      </div>
+      <p>免费、开源、完全离线的 Markdown 桌面编辑器 · MIT License</p>
+      <p>© 2026 Barryhzy · 本页由 GitHub Pages 提供</p>
+    </footer>
+
+    <script>
+      document.querySelectorAll("[data-copy]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(btn.dataset.copy);
+            btn.textContent = "已复制";
+            setTimeout(() => (btn.textContent = "复制"), 1600);
+          } catch {}
+        });
+      });
+    </script>
+  </body>
+</html>
