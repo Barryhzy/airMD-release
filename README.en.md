@@ -22,9 +22,11 @@ A local Markdown editor with a document-style editing experience, made for the g
 
 airMD is a **free, open-source Markdown desktop editor**. Double-click a file for a quick edit, or open a project folder and work across multiple tabs. Your changes save directly to local `.md` files. Everyday editing works entirely offline.
 
-![airMD in English: visual editing, task lists, tables, and an outline](docs/screenshots/readme-en.jpg)
+![airMD editing demo: slash commands, headings, bold text, tasks, tables, and source mode](docs/demos/editing-demo.gif)
 
-*Browser demo. The desktop app reads and writes local files directly.*
+Type `/` to choose a heading, write and bold text, check off a task, fill in a table, and switch to Markdown source.
+
+*23-second recording of the browser demo, shown in Chinese. The desktop app reads and writes local files directly.*
 
 ## Why I built airMD
 
@@ -54,6 +56,12 @@ Use it for a quick change to one file or a longer writing session across many do
 - **Comfortable long-form writing**: an outline, collapsible headings, adjustable font size, and light and dark themes.
 - **Source when you need it**: switch between visual and source modes. Content the editor cannot fully preserve opens in source mode with a warning by default.
 - **Your files, your workflow**: Windows and macOS, Simplified Chinese and English. No account required; your documents stay under your control.
+
+## A closer look
+
+![airMD in English: visual editing, task lists, tables, and an outline](docs/screenshots/readme-en.jpg)
+
+*Browser demo. The desktop app reads and writes local files directly.*
 
 ## Install
 
